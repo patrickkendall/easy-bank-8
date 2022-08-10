@@ -15,6 +15,7 @@ const Transaction = require("../model/Transaction");
  * @description - User SignUp
  */
 
+
  router.post("/create", async (req, res) => {
   transaction = new Transaction({
     transactionAmount: req.body.transactionAmount,
@@ -24,6 +25,8 @@ const Transaction = require("../model/Transaction");
     recievingBank: req.body.recievingBank,
     remarks: req.body.remarks,
     sender: req.body.sender,
+    description: req.body.description,
+    withdrawalOrDeposit: req.body.withdrawalOrDeposit,
     timestamp: new Date()
   });
 	await transaction.save()
@@ -60,7 +63,7 @@ router.post(
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch)
         return res.status(400).json({
-          message: "Incorrect Password !"
+          message: "Incorrect Password"
         });
 
       const payload = {

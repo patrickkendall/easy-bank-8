@@ -32,6 +32,14 @@ const TransactionSchema = mongoose.Schema({
   timestamp: {
     type: Date,
     required: true
+  },
+  withdrawalOrDeposit: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
   }
 });
 
